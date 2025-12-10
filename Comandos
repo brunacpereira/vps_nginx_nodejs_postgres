@@ -1,0 +1,51 @@
+Comandos:
+
+Parar container e criar novo a partir do docker compose:
+
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+
+
+Ver todos os containers rodando:
+docker container ls
+
+Ver todos os containers, inclusive os que estão parados:
+docker container ls -a 
+
+Entrar dentro do container:
+docker exec -it [id_container] /bin/bash
+docker exec -it nginx_nodejs_postgres_minha_app_1 sh
+
+Rodar comandos dentro do container:
+docker exec -it [nome_container] npm list pg
+
+Ver logs do container:
+docker logs [id_container]
+
+Listar imagens:
+docker image ls
+
+Inspecionar o container:
+docker container inspect [id_container]
+
+Startar o container:
+docker container start [id_container]
+
+Parar o container:
+docker container stop [id_container]
+
+Restartar o container:
+docker container restart [id_container]
+
+Remover container:
+docker rm [id_container]
+
+Remover imagem:
+docker rmi [id_imagem]
+
+Ver logs da aplicação:
+docker compose logs -f minha_app
+
+Cria um novo container a partir de arquivo:
+docker-compose run minha_app node /usr/src/app/db_setup/prepare.js

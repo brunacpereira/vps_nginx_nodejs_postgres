@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./nginx/app.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - minha_app
+    ports:
+      - 80:80
+  db:
+    image: postgres
+    restart: always
+    environment: 
+      POSTGRES_PASSWORD: mypassword    
+      POSTGRES_DB: crud_node
+    ports:
+      - 5432
+  minha_app:
+    image: brunapereira/minha-app-dockerizada:latest
+    build: .
+    depends_on:
+      - db
+
